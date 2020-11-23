@@ -34,7 +34,7 @@ public class Board{
     			owner = white;
 		    switch(pieceType) {
 		    case 'K' : case 'k' :  
-    			{ this.addPiece(new King(col, row, owner));break;}
+    			{ this.addPiece(new King(col, row, owner)); break;}
 		    }
 	    	}	    	
 	    }
@@ -55,7 +55,8 @@ public class Board{
     }
 
     public List<Piece> getPieces() {
-	return null;
+
+    	return null;
     }
 
     public void addPiece(Piece piece){
@@ -84,7 +85,7 @@ public class Board{
 	return false;
     }
     
-    public boolean sameLineNothingBetween(Coordinates origin, Coordinates destination){
+    public boolean sameRowNothingBetween(Coordinates origin, Coordinates destination){
 	return false;
     }
 

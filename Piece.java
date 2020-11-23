@@ -48,14 +48,10 @@ public abstract class Piece{
 	return true;
     }
 
-    public abstract boolean isMoveLegal(Board board, Coordinates destination);
+    public abstract boolean isMoveAuthorized(Board board, Coordinates destination);
 
     public abstract Type getType();
     public abstract int getValue();
     
-    public boolean isMovePlayable(Board board, Coordinates destination){
-	return true;
-    }
-
 
 }

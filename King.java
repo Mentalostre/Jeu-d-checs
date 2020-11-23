@@ -5,11 +5,14 @@ public class King extends Piece {
 		owner.setKing(this);
     }
 
-    public boolean isMoveLegal(Board board, Coordinates destination){
+    public boolean isMoveAuthorized(Board board, Coordinates destination){
 	int dx = destination.getX();
 	int dy = destination.getY();
 	int ox = this.getX();
 	int oy = this.getY();
+
+
+
 	return true;
     }
 
@@ -22,5 +25,5 @@ public class King extends Piece {
     public int getValue() {
 	return 0;
     }
-
+    
 }
