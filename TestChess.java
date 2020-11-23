@@ -7,17 +7,17 @@ public class TestChess{
 	    
 	    boolean result;
 	    /* Test de déplacements autorisés selon les regles de pièces */
-	    System.out.println("legal moves");
+	    System.out.println("authorized moves");
 	    System.out.print("test 1 : ");
-	    result = testLegalMove("boardConfigurationFiles/FullBoard.txt", new Coordinates(0,1), new Coordinates(0,2));
+	    result = testAuthorizedMove("boardConfigurationFiles/FullBoard.txt", new Coordinates(0,1), new Coordinates(0,2));
 	    if(result == true) System.out.println("pass"); else System.out.println("fail");
 	    
 	    System.out.print("test 2 : ");
-	    result = testLegalMove("boardConfigurationFiles/FullBoard.txt", new Coordinates(0,1), new Coordinates(0,4));
+	    result = testAuthorizedMove("boardConfigurationFiles/FullBoard.txt", new Coordinates(0,1), new Coordinates(0,4));
 	    if(result == false) System.out.println("pass"); else System.out.println("fail");
 	    
 	    
-	    /*  Test de déplacements legal sur l'échiquier actuel, selon les regles du jeu */
+	    /*  Test de déplacements jouables sur l'échiquier actuel, selon les regles du jeu */
 	    System.out.println("playable moves");
 	    System.out.print("test 1 : ");
 	    result = testPlayableMove("boardConfigurationFiles/FullBoard.txt",new Coordinates(0,1),new Coordinates(0,2));
@@ -35,7 +35,7 @@ public class TestChess{
     }
 
     
-    public static boolean testLegalMove(String filename, Coordinates origin, Coordinates destination) {    			
+    public static boolean testAuthorizedMove(String filename, Coordinates origin, Coordinates destination) {    			
 	ChessUI ui = new ChessUI(false);
 	Board testBoard = new Board(filename, new Human(ui, ChessColor.WHITE), new Human(ui, ChessColor.BLACK));
 	Piece testPiece = testBoard.getPiece(origin);
@@ -43,7 +43,7 @@ public class TestChess{
 	    System.out.println("No Piece at :"+origin); 
 	    return false;
 	}
-	return testPiece.isMoveLegal(testBoard, destination);
+	return testPiece.isMoveAuthorized(testBoard, destination);
     }
 
 	
