@@ -5,27 +5,27 @@ public class TestChess{
 
 	public static void main(String[] args) {
 	    
-	    boolean result;
+	    boolean resultTest;
 	    /* Test de déplacements autorisés selon les regles de pièces */
 	    System.out.println("authorized moves");
 	    System.out.print("test 1 : ");
-	    result = testAuthorizedMove("boardConfigurationFiles/FullBoard.txt", new Coordinates(0,1), new Coordinates(0,2));
-	    if(result == true) System.out.println("pass"); else System.out.println("fail");
+	    resultTest = testAuthorizedMove("boardConfigurationFiles/FullBoard.txt", new Coordinates(0,1), new Coordinates(0,2));
+	    if(resultTest == true) System.out.println("pass"); else System.out.println("fail");
 	    
 	    System.out.print("test 2 : ");
-	    result = testAuthorizedMove("boardConfigurationFiles/FullBoard.txt", new Coordinates(0,1), new Coordinates(0,4));
-	    if(result == false) System.out.println("pass"); else System.out.println("fail");
+	    resultTest = testAuthorizedMove("boardConfigurationFiles/FullBoard.txt", new Coordinates(0,1), new Coordinates(0,4));
+	    if(resultTest == false) System.out.println("pass"); else System.out.println("fail");
 	    
 	    
 	    /*  Test de déplacements jouables sur l'échiquier actuel, selon les regles du jeu */
 	    System.out.println("playable moves");
 	    System.out.print("test 1 : ");
-	    result = testPlayableMove("boardConfigurationFiles/FullBoard.txt",new Coordinates(0,1),new Coordinates(0,2));
-	    if(result == true) System.out.println("pass"); else System.out.println("fail");
+	    resultTest = testPlayableMove("boardConfigurationFiles/FullBoard.txt",new Coordinates(0,1),new Coordinates(0,2));
+	    if(resultTest == true) System.out.println("pass"); else System.out.println("fail");
 
 	    System.out.print("test 2 : ");
-	    result = testPlayableMove("boardConfigurationFiles/FullBoard.txt",new Coordinates(0,1),new Coordinates(0,3));
-	    if(result == true) System.out.println("pass"); else System.out.println("fail");
+	    resultTest = testPlayableMove("boardConfigurationFiles/FullBoard.txt",new Coordinates(0,1),new Coordinates(0,3));
+	    if(resultTest == true) System.out.println("pass"); else System.out.println("fail");
 	    
 	    /*  Tests de la mise en échec */
 	    

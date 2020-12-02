@@ -23,10 +23,30 @@ public class GameUI {
     public Board getBoard(){
 	return null;
     }
+
     public boolean undo(){
+	if(this.history.empty()) return false;
+	Move move = this.history.pop();
+	board.emptyCell(move.destination);
+	ui.removePiece(move.destination);
+	if(move.pieceAtDestination != null){
+	    move.pieceAtDestination.setPosition(move.destination);
+	    board.addPiece(move.pieceAtDestination);
+	    ui.placePiece(move.pieceAtDestination.getType(), move.pieceAtDestination.getColor(), move.pieceAtDestination.getPosition());
+	}
+	board.emptyCell(move.origin);
+	ui.removePiece(move.origin);
+	move.pieceAtOrigin.setPosition(move.origin);
+	board.addPiece(move.pieceAtOrigin);
+	ui.placePiece(move.pieceAtOrigin.getType(), move.pieceAtOrigin.getColor(), move.pieceAtOrigin.getPosition());
+	
+	currentPlayer = move.pieceAtOrigin.getOwner();
+	if(move.pieceAtDestination != null)
+	    currentPlayer.removeFromScore(move.pieceAtDestination.getValue());
 	return true;
     }
     
+     
     public boolean isMovePlayable(Move gameMove){
 	return true;
     }
@@ -57,5 +77,14 @@ public class GameUI {
     }
     
     public void play(){
+	int numberOfHits = 0
+	while(numberOfHits < 50){
+	    Move move = new Move(board,currentPlayer.getFromTo());
+	    if(! isMovePlayable(move)) continue;
+
+
+	    numberOfHits ++;
+	    switchPlayer();
+	}
     }
 }
