@@ -27,7 +27,7 @@ public class TestChess{
 	    result = testPlayableMove("boardConfigurationFiles/FullBoard.txt",new Coordinates(0,1),new Coordinates(0,3));
 	    if(result == true) System.out.println("pass"); else System.out.println("fail");
 	    
-	    /*  Tests de la mise en echec */
+	    /*  Tests de la mise en échec */
 	    
 	    /*  Tests de la Echec et mat "isCheckMate()" */
 	    
@@ -36,7 +36,7 @@ public class TestChess{
 
     
     public static boolean testAuthorizedMove(String filename, Coordinates origin, Coordinates destination) {    			
-	ChessUI ui = new ChessUI(false);
+	ChessUI ui = new ChessUI();
 	Board testBoard = new Board(filename, new Human(ui, ChessColor.WHITE), new Human(ui, ChessColor.BLACK));
 	Piece testPiece = testBoard.getPiece(origin);
 	if(testPiece == null) {
@@ -48,7 +48,7 @@ public class TestChess{
 
 	
     public static boolean testPlayableMove(String fileName, Coordinates origin, Coordinates destination) {    			
-	ChessUI ui = new ChessUI(false);
+	ChessUI ui = new ChessUI();
 	GameUI g = new GameUI(ui, fileName, new Human(ui, ChessColor.WHITE), new Human(ui, ChessColor.BLACK));
 	
 	Piece testPiece = g.getBoard().getPiece(origin);
@@ -60,13 +60,13 @@ public class TestChess{
     }
 
     public static boolean testIsCheck(String fileName, Player p) {    			
-	ChessUI ui = new ChessUI(false);
+	ChessUI ui = new ChessUI();
 	GameUI g = new GameUI(ui, fileName, new Human(ui, ChessColor.WHITE), new Human(ui, ChessColor.BLACK));
 	return g.isCheck(p);
     }
 
     public static boolean testIsCheckMate(String fileName, Player p) {    			
-	ChessUI ui = new ChessUI(false);
+	ChessUI ui = new ChessUI();
 	GameUI g = new GameUI(ui, fileName, new Human(ui, ChessColor.WHITE), new Human(ui, ChessColor.BLACK));
 	return g.isCheck(p) && g.isCheckMate(p);
     }
