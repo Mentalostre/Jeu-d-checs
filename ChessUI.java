@@ -17,6 +17,7 @@ public class ChessUI extends JFrame implements MouseListener, MouseMotionListene
     int originYMove;
     int destXMove;
     int destYMove;
+    Color boardColor = new Color(147, 81, 22);
 
     boolean moveFreshness;
 
@@ -47,7 +48,7 @@ public class ChessUI extends JFrame implements MouseListener, MouseMotionListene
             JPanel square = new JPanel( new BorderLayout() );
             chessBoard.add( square );
 
-            square.setBackground( (i + i / 8) % 2 == 1 ? Color.GRAY : Color.WHITE );
+            square.setBackground( (i + i / 8) % 2 == 1 ? boardColor : Color.WHITE );
         }
 
         initIcons();

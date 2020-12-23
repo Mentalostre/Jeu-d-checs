@@ -9,47 +9,60 @@ public abstract class Player{
     public boolean isCheckMate;
 
     public Player(ChessColor color){
+        this.color = color;
     }
 
     public ChessColor getColor(){
-	return null;
+	    return color;
     }
 
     public int getScore(){
-	return 0;
+	    return score;
     }
 
     public void addToScore(int value){
+        score += value;
     }
     
     public void removeFromScore(int value){
+        score -= value;
     }
     
-    public abstract FromTo getFromTo();
+    public abstract FromTo getFromTo(GameUI gameUI);
 
     public Piece getKing(){
-	return null;
+	    return king;
     }
     
     public void setKing(King king){
+        this.king = king;
     }
     
     public boolean isCheckMate(Board board){
-	return false;
+	    return isCheckMate;
     }
 
     public void setCheck(){
+        isCheck = true;
     }
 
     public void unSetCheck(){
+        isCheck = false;
     }
     
     public List<Move> getAllMoves(Board board) {
-	return null;
+        List<Move> allMove = new ArrayList<Move>();
+        for (Piece piece : board.getPieces(this)) {
+            for (Move move : piece.getAllMoves(board)){
+                allMove.add(move);
+            }
+        }
+        return allMove;
     }
+
 
     @Override
     public String toString(){
-	return null;
+        return String.valueOf(color);
     }
 }

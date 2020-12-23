@@ -6,9 +6,10 @@ public class Human extends Player{
         this.ui = ui;
     }
 
+
     @Override
-    public FromTo getFromTo() {
+    public FromTo getFromTo(GameUI gameUI) {
         return ui.waitForPlayerMove();
     }
-    
+
 }

@@ -3,15 +3,15 @@ public class FromTo {
     private final Coordinates to;
     
     public FromTo(int ox, int oy, int dx, int dy) {
-	from = null;
-	to = null;
+	from = new Coordinates(ox,oy);
+	to = new Coordinates(dx,dy);
     }
 
     public Coordinates getFrom() {
-        return null;
+        return from;
     }
 
     public Coordinates getTo() {
-        return null;
+        return to;
     }
 }

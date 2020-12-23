@@ -4,8 +4,10 @@ import java.util.List;
 public abstract class Piece{
     protected Coordinates position;
     protected Player owner;
-    
+
     public Piece(int x, int y, Player owner){
+        this.position = new Coordinates(x, y);
+        this.owner = owner;
     }
 
     public enum Type {
@@ -18,40 +20,49 @@ public abstract class Piece{
     }
 
     public void setPosition(Coordinates destination){
+        position = destination;
     }
-    
+
     public Player getOwner(){
-	return null;
+        return owner;
     }
 
     public ChessColor getColor(){
-	return null;
+        return owner.getColor();
     }
 
     public Coordinates getPosition(){
-	return null;
+        return position;
     }
 
     public int getX(){
-	return 0;
+        return position.getX();
     }
-    
+
     public int getY(){
-	return 0;
+        return position.getY();
     }
 
     public List<Move> getAllMoves(Board board) {
-	return null;
+        List<Move> allMoves = new ArrayList<>();
+        for (Coordinates coordinate : board.getAllCoordinates())
+            if(this.isMoveAuthorized(board, coordinate))
+                allMoves.add(new Move(board, position, coordinate));
+        return allMoves;
     }
 
     public boolean sameColor(Piece piece){
-	return true;
+        return this.getColor() == piece.getColor();
     }
 
     public abstract boolean isMoveAuthorized(Board board, Coordinates destination);
 
     public abstract Type getType();
     public abstract int getValue();
-    
+
+    public String toString() {
+        return owner.toString() + " " + getType();
+    }
+
 
 }
